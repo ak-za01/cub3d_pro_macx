@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/10 20:00:00 by anktiri           #+#    #+#             */
-/*   Updated: 2025/10/11 16:31:15 by anktiri          ###   ########.fr       */
+/*   Created: 2025/10/16 20:49:54 by akzaza            #+#    #+#             */
+/*   Updated: 2025/10/19 07:34:18 by akzaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-/* Remove trailing newline from line */
 static char	*trim_newline(char *line)
 {
 	int		len;
@@ -29,7 +28,6 @@ static char	*trim_newline(char *line)
 	return (trimmed);
 }
 
-/* Reallocate grid to add new line */
 static char	**realloc_grid(char **old_grid, int old_height, int new_height)
 {
 	char	**new_grid;
@@ -51,30 +49,6 @@ static char	**realloc_grid(char **old_grid, int old_height, int new_height)
 	return (new_grid);
 }
 
-/* Check if line is start of map */
-int	is_map_line(char *line)
-{
-	int		i;
-	int		has_content;
-
-	if (!line || is_empty_line(line))
-		return (0);
-	i = 0;
-	has_content = 0;
-	while (line[i])
-	{
-		if (line[i] == '\n' || line[i] == '\r')
-			break;
-		if (!is_map_char(line[i]))
-			return (0);
-		if (line[i] != ' ')
-			has_content = 1;
-		i++;
-	}
-	return (has_content);
-}
-
-/* Store a single map line in the data structure */
 int	store_map_line(t_data *data, char *line)
 {
 	char	*trimmed;
@@ -91,9 +65,8 @@ int	store_map_line(t_data *data, char *line)
 	line_len = ft_strlen(trimmed);
 	if (line_len > data->map.width)
 		data->map.width = line_len;
-	data->map.grid = realloc_grid(data->map.grid, 
-									data->map.height, 
-									data->map.height + 1);
+	data->map.grid = realloc_grid(data->map.grid, data->map.height, \
+		data->map.height + 1);
 	if (!data->map.grid)
 	{
 		free(trimmed);
@@ -102,5 +75,53 @@ int	store_map_line(t_data *data, char *line)
 	}
 	data->map.grid[data->map.height] = trimmed;
 	data->map.height++;
+	return (1);
+}
+
+int	find_player(t_data *data)
+{
+	int		i;
+	int		j;
+	int		player_count;
+
+	player_count = 0;
+	i = -1;
+	while (++i < data->map.height)
+	{
+		j = -1;
+		while (data->map.grid[i][++j])
+		{
+			if (is_player_char(data->map.grid[i][j]))
+			{
+				player_count++;
+				set_player_data(data, i, j);
+			}
+		}
+	}
+	if (player_count == 0)
+		return ((print_error("No player found in map")), 0);
+	if (player_count > 1)
+		return ((print_error("Multiple players found in map")), 0);
+	return (1);
+}
+
+int	validate_map(t_data *data)
+{
+	if (!data || !data->map.grid)
+	{
+		print_error("No map data");
+		return (0);
+	}
+	if (data->map.height == 0 || data->map.width == 0)
+	{
+		print_error("Empty map");
+		return (0);
+	}
+	if (!check_map_characters(data))
+		return (0);
+	if (!find_player(data))
+		return (0);
+	if (!check_map_closed(data))
+		return (0);
 	return (1);
 }

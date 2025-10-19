@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 17:00:29 by anktiri           #+#    #+#             */
-/*   Updated: 2025/10/12 07:49:27 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/10/19 14:51:19 by akzaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	free_map(t_map *map)
 	int	i;
 
 	if (!map || !map->grid)
-		return;
+		return ;
 	i = 0;
 	while (i < map->height)
 	{
@@ -75,7 +75,7 @@ void	free_data(t_data *data)
 	int	i;
 
 	if (!data)
-		return;
+		return ;
 	i = 0;
 	while (i < TEX_COUNT)
 	{

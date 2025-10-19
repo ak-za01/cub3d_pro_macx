@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 19:15:00 by anktiri           #+#    #+#             */
-/*   Updated: 2025/10/12 20:05:58 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/10/19 15:09:28 by akzaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
 
-/* Initialize all data to zero/NULL */
 void	init_data(t_data *data)
 {
 	int	i;
@@ -39,36 +38,33 @@ void	init_data(t_data *data)
 	}
 }
 
-// /* Check if all required elements have been parsed */
-// int	all_elements_parsed(t_data *data)
-// {
-// 	int	i;
+int	all_elements_parsed(t_data *data)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (i < ELEM_COUNT)
-// 	{
-// 		if (data->parsed[i] == 0)
-// 			return (0);
-// 		i++;
-// 	}
-// 	return (1);
-// }
+	i = 0;
+	while (i < ELEM_COUNT)
+	{
+		if (data->parsed[i] == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
-/* Print map grid for debugging */
-// static void	print_map(t_data *data)
-// {
-// 	int	i;
+static void	print_map(t_data *data)
+{
+	int	i;
 
-// 	printf("\nMAP GRID:\n");
-// 	i = 0;
-// 	while (i < data->map.height)
-// 	{
-// 		printf("  [%d] '%s'\n", i, data->map.grid[i]);
-// 		i++;
-// 	}
-// }
+	printf("\nMAP GRID:\n");
+	i = 0;
+	while (i < data->map.height)
+	{
+		printf("  [%d] '%s'\n", i, data->map.grid[i]);
+		i++;
+	}
+}
 
-/* Print parsing results for debugging */
 static void	print_parse_results(t_data *data)
 {
 	printf("\n✓ Parsing Complete!\n");
@@ -83,11 +79,11 @@ static void	print_parse_results(t_data *data)
 		data->floor_color.r, data->floor_color.g, data->floor_color.b);
 	printf("  Ceiling: RGB(%d, %d, %d)\n",
 		data->ceiling_color.r, data->ceiling_color.g, data->ceiling_color.b);
-	// printf("\nMAP INFO:\n");
-	// printf("  Size: %dx%d\n", data->map.width, data->map.height);
-	// printf("  Player: (%.1f, %.1f) facing '%c'\n",
-		// data->player.pos_x, data->player.pos_y, data->player.orientation);
-	// print_map(data);
+	printf("\nMAP INFO:\n");
+	printf("  Size: %dx%d\n", data->map.width, data->map.height);
+	printf("  Player: (%.1f, %.1f) facing '%c'\n",
+		data->player.pos_x, data->player.pos_y, data->player.orientation);
+	print_map(data);
 	printf("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n");
 }
 

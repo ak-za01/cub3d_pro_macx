@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 01:44:22 by anktiri           #+#    #+#             */
-/*   Updated: 2025/10/12 22:29:18 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/10/19 14:51:54 by akzaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int	is_texture_line(char *line)
 	if (!str || !*str)
 		return (0);
 	if ((ft_strncmp(str, "NO", 2) == 0 && (str[2] == '\0' \
-	|| ft_isspace(str[2]))) || 
+	|| ft_isspace(str[2]))) || \
 		(ft_strncmp(str, "SO", 2) == 0 && (str[2] == '\0' \
-		|| ft_isspace(str[2]))) || 
+		|| ft_isspace(str[2]))) || \
 		(ft_strncmp(str, "WE", 2) == 0 && (str[2] == '\0' \
-		|| ft_isspace(str[2]))) || 
+		|| ft_isspace(str[2]))) || \
 		(ft_strncmp(str, "EA", 2) == 0 && (str[2] == '\0' \
 		|| ft_isspace(str[2]))))
 		return (1);
@@ -86,15 +86,15 @@ int	is_element_line(char *line)
 	if (!str || !*str)
 		return (0);
 	if ((ft_strncmp(str, "NO", 2) == 0 && \
-	(str[2] == '\0' || ft_isspace(str[2]))) || 
+	(str[2] == '\0' || ft_isspace(str[2]))) || \
 		(ft_strncmp(str, "SO", 2) == 0 && \
-		(str[2] == '\0' || ft_isspace(str[2]))) || 
+		(str[2] == '\0' || ft_isspace(str[2]))) || \
 		(ft_strncmp(str, "WE", 2) == 0 && \
-		(str[2] == '\0' || ft_isspace(str[2]))) || 
+		(str[2] == '\0' || ft_isspace(str[2]))) || \
 		(ft_strncmp(str, "EA", 2) == 0 && \
 		(str[2] == '\0' || ft_isspace(str[2]))))
 		return (1);
-	if ((str[0] == 'F' && (str[1] == '\0' || ft_isspace(str[1]))) || 
+	if ((str[0] == 'F' && (str[1] == '\0' || ft_isspace(str[1]))) || \
 		(str[0] == 'C' && (str[1] == '\0' || ft_isspace(str[1]))))
 		return (1);
 	return (0);

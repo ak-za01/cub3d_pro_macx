@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 16:44:11 by anktiri           #+#    #+#             */
-/*   Updated: 2025/10/13 00:06:23 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/10/19 14:50:51 by akzaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_map_char(char c)
 {
-	return (c == '0' || c == '1' || c == 'N' || 
+	return (c == '0' || c == '1' || c == 'N' || \
 		c == 'S' || c == 'E' || c == 'W' || c == ' ');
 }
 
@@ -88,10 +88,10 @@ int	parse_file(char *filename, t_data *data)
 		return ((close(fd)), 0);
 	if (!validate_elements_complete(data))
 		return ((frr(fd, first_mline)), 0);
-	// if (!parse_map(fd, data, first_mline))
-	// 	return ((frr(fd, first_mline)), 0);
-	// frr(fd, first_mline);
-	// if (!validate_map(data))
-	// 	return (0);
+	if (!parse_map(fd, data, first_mline))
+		return ((frr(fd, first_mline)), 0);
+	frr(fd, first_mline);
+	if (!validate_map(data))
+		return (0);
 	return (1);
 }
