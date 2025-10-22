@@ -1,16 +1,26 @@
-                 NO         textures/simonkraft/respawn_anchor_side0.xpm
 
-      EA textures/simonkraft/respawn_anchor_side2.xpm
-SO textures/simonkraft/respawn_anchor_side4.xpm
-WE textures/simonkraft/respawn_anchor_side3.xpm
+
+NO Tools/textures/simonkraft/respawn_anchor_side0.xpm
+EA Tools/textures/simonkraft/respawn_anchor_side2.xpm
+SO Tools/textures/simonkraft/respawn_anchor_side4.xpm
+WE Tools/textures/simonkraft/respawn_anchor_side3.xpm
+
+
+
+
 F 52,254,0000000
 C 35,19,73
 
 
 
-   111111  11111
-111100001111
-10011111111
-1E01100111
-1001111111
-11111111
+
+
+
+111111111111111111111111
+100000000000000000000001
+100000000001000000000001
+100000000011100000000001
+100000000001000000000001
+10000S000000000000000001
+100000000000000000000001
+111111111111111111111111

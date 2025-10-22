@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
+/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 18:34:32 by anktiri           #+#    #+#             */
-/*   Updated: 2025/10/22 20:56:03 by akzaza           ###   ########.fr       */
+/*   Updated: 2025/10/22 21:06:25 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
+
+#ifdef __linux__
+	#include "../../Tools/mlx/linux/MLX42.h"
+#else
+	#include "../../Tools/mlx/macOS/MLX42.h"
+#endif
 
 # define NORTH 0
 # define SOUTH 1
@@ -66,7 +72,6 @@ typedef struct s_data
 }	t_data;
 
 int		parse_file(char *filename, t_data *data);
-int main_core(t_data *data, char *file_name);
 
 int		check_file(char *filename, int flag);
 
