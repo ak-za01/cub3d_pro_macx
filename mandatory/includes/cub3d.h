@@ -6,7 +6,7 @@
 /*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 18:34:32 by anktiri           #+#    #+#             */
-/*   Updated: 2025/10/19 15:09:41 by akzaza           ###   ########.fr       */
+/*   Updated: 2025/10/22 20:56:03 by akzaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_data
 }	t_data;
 
 int		parse_file(char *filename, t_data *data);
+int main_core(t_data *data, char *file_name);
 
 int		check_file(char *filename, int flag);
 
