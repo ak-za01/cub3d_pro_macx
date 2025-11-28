@@ -6,7 +6,7 @@
 /*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:56:32 by akzaza            #+#    #+#             */
-/*   Updated: 2025/11/28 00:20:52 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/11/28 23:23:08 by anktiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ void	init_data(t_data *data)
 	int	i;
 
 	i = 0;
+	// data = ft_calloc(1, sizeof(t_data *));
+	// if (!data)
+	// 	return ;
 	while (i < TEX_COUNT)
 	{
 		data->textures[i] = NULL;
@@ -32,6 +35,7 @@ void	init_data(t_data *data)
 	data->player.pos_x = 0;
 	data->player.pos_y = 0;
 	data->player.orientation = 0;
+	data->next_file = NULL;
 	i = 0;
 	while (i < ELEM_COUNT)
 	{
@@ -76,6 +80,9 @@ void	print_parse_results(t_data *data)
 	printf("  South:  %s\n", data->textures[SOUTH]);
 	printf("  West:   %s\n", data->textures[WEST]);
 	printf("  East:   %s\n", data->textures[EAST]);
+	printf("  DOOR:   %s\n", data->textures[DOOR]);
+	printf("  PRTL:   %s\n", data->textures[PORTAL]);
+	printf("  LVEL:   %s\n", data->next_file);
 	printf("\nCOLORS:\n");
 	printf("  Floor:   RGB(%d, %d, %d)\n", data->floor_color.r,
 		data->floor_color.g, data->floor_color.b);
@@ -89,19 +96,33 @@ void	print_parse_results(t_data *data)
 	printf("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n");
 }
 
-int	main_core(t_data *data, char *file_name)
+int	main_core(t_data **data, char *file_name)
 {
-	init_data(data);
+	t_data *tmp;
+
 	if (!check_file(file_name, 1))
 	{
 		print_error("Invalid file extension (must be .cub)");
 		return (1);
 	}
-	if (!parse_file(file_name, data))
+	while (1)
 	{
-		free_data(data);
-		return (1);
+		tmp = malloc(sizeof(t_data));
+		if (!tmp)
+			return (1);
+		init_data(tmp);
+		if (!parse_file(file_name, tmp))
+		{
+			free_data(tmp);
+			free_list(*data);
+			return (1);
+		}
+		add_back(data, tmp);
+		if (!tmp->next_file)
+			break ;
+		else
+			file_name = tmp->next_file;
 	}
-	print_parse_results(data);
+	print_parse_results(*data);
 	return (0);
 }

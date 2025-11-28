@@ -6,7 +6,7 @@
 /*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 09:42:24 by noctis            #+#    #+#             */
-/*   Updated: 2025/11/28 00:18:13 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/11/28 19:28:40 by anktiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_close_doors(t_data *data)
 	while (++y < data->map.grid_y)
 	{
 		x = -1;
-		while (++x < data->map.grid_x)
+		while (++x < (int)ft_strlen(data->map.grid[y]))
 		{
 			if (data->map.grid[y][x] != '3')
 				continue ;

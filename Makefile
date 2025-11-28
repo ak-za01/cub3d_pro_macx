@@ -29,9 +29,10 @@ Parse = mandatory/main.c \
 		mandatory/parsing/utils.c \
 		mandatory/parsing/parsing.c \
 		mandatory/parsing/parsing_utils.c \
+		mandatory/parsing/level_utils.c \
 	  	mandatory/parsing/textures.c \
 		mandatory/parsing/color.c \
-		mandatory/parsing/color_utils.c \
+mandatory/parsing/color_utils.c \
 		mandatory/parsing/init.c \
 		mandatory/parsing/map.c \
 		mandatory/parsing/map_utils.c \
@@ -59,8 +60,7 @@ all: clean $(NAME)
 
 $(NAME): $(OBJ)
 #	@make -C $(libft_DIR)
-	$(CC) $(CFLAGS) $(OBJ) $(MLX_LIBRARIES) $(libft) -o $(NAME) -lm && $(add)
-
+	$(CC) $(CFLAGS) $(OBJ) $(MLX_LIBRARIES) $(libft) -o $(NAME) -lm
 %.o: %.c $(INC) $(libft_DIR)/libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 

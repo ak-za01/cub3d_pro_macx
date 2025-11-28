@@ -6,7 +6,7 @@
 /*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 18:34:32 by anktiri           #+#    #+#             */
-/*   Updated: 2025/11/28 00:19:03 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/11/28 23:22:26 by anktiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,18 @@ int		main(int ac, char **av);
 // -------------------------------------------- Parsing:
 
 int		parse_file(char *filename, t_data *data);
-int		main_core(t_data *data, char *file_name);
+int		main_core(t_data **data, char *file_name);
 
+void	add_back(t_data **lst, t_data *new);
 int		check_file(char *filename, int flag);
 
-int		parse_texture_line(char *line, t_data *data);
+int		parse_texture_line(char *line, t_data *data, int f);
+int		parse_lvl_line(char *line, t_data *data);
 int		parse_color_line(char *line, t_data *data);
 int		parse_rgb(char *str, t_color *color);
 
 int		is_texture_line(char *line);
+int		is_lvl_line(char *line);
 int		is_element_line(char *line);
 int		is_map_line(char *line);
 
@@ -67,6 +70,7 @@ int		is_player_char(char c);
 void	print_error(char *msg);
 void	free_data(t_data *data);
 void	free_map(t_map *map);
+void	free_list(t_data *head);
 
 void	init_data(t_data *data);
 

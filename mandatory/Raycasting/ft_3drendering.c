@@ -6,7 +6,7 @@
 /*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 19:28:03 by anktiri           #+#    #+#             */
-/*   Updated: 2025/11/28 00:44:42 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/11/28 00:22:15 by anktiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,5 @@ void	ft_render3d(t_data *data)
 		ft_render_column(data, &vars);
 		vars.column++;
 	}
-	// fps();
+	fps();
 }

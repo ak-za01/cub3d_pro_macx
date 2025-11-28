@@ -6,7 +6,7 @@
 /*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 16:44:11 by anktiri           #+#    #+#             */
-/*   Updated: 2025/11/27 20:28:58 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/11/28 22:06:46 by anktiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ int	element_line(char *line, t_data *data)
 	{
 		if (is_texture_line(line))
 		{
-			if (!parse_texture_line(line, data))
+			if (!parse_texture_line(line, data, 0))
+				return ((free(line)), 0);
+		}
+		else if (is_lvl_line(line))
+		{
+			if (!parse_lvl_line(line, data))
 				return ((free(line)), 0);
 		}
 		else

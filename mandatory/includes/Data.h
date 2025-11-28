@@ -6,7 +6,7 @@
 /*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 10:45:27 by noctis            #+#    #+#             */
-/*   Updated: 2025/11/27 21:48:47 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/11/28 20:22:24 by anktiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,19 +133,21 @@ typedef struct s_texture
 
 typedef struct s_data
 {
-	int			parsed[ELEM_COUNT];
-	char		*textures[TEX_COUNT];
-	t_texture	load_textures[TEX_COUNT];
-	t_color		floor_color;
-	t_color		ceiling_color;
-	t_map		map;
-	t_mlx		mlx;
-	t_player	player;
-	t_mini		mini;
-	t_ray		*rays;
-	double		fov;
-	double		ang;
-	double		move_speed;
+	int				parsed[ELEM_COUNT];
+	char			*textures[TEX_COUNT];
+	char			*next_file;
+	t_texture		load_textures[TEX_COUNT];
+	t_color			floor_color;
+	t_color			ceiling_color;
+	t_map			map;
+	t_mlx			mlx;
+	t_player		player;
+	t_mini			mini;
+	t_ray			*rays;
+	double			fov;
+	double			ang;
+	double			move_speed;
+	struct s_data	*next;
 }				t_data;
 
 #endif

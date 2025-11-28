@@ -6,7 +6,7 @@
 /*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 17:00:29 by anktiri           #+#    #+#             */
-/*   Updated: 2025/11/23 04:23:44 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/11/28 22:52:57 by anktiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	free_data(t_data *data)
 		}
 		i++;
 	}
+	free(data->next_file);
+	data->next = NULL;
 	free_map(&data->map);
 }
 
