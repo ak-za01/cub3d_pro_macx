@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 16:44:11 by anktiri           #+#    #+#             */
-/*   Updated: 2025/11/27 20:28:58 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/12/03 18:42:05 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	is_map_char(char c)
 {
-	return (c == '0' || c == '1' || c == '2' || c == '4' || \
-	c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == ' ');
+	return (c == '0' || c == '1' || c == '2' || c == '4' || c == 'N' || c == 'S'
+		|| c == 'E' || c == 'W' || c == ' ');
 }
 
 int	element_line(char *line, t_data *data)
@@ -24,7 +24,12 @@ int	element_line(char *line, t_data *data)
 	{
 		if (is_texture_line(line))
 		{
-			if (!parse_texture_line(line, data))
+			if (!parse_texture_line(line, data, 0))
+				return ((free(line)), 0);
+		}
+		else if (is_lvl_line(line))
+		{
+			if (!parse_lvl_line(line, data))
 				return ((free(line)), 0);
 		}
 		else
@@ -85,11 +90,11 @@ int	parse_file(char *filename, t_data *data)
 		return ((print_error("Cannot open file")), 0);
 	first_mline = NULL;
 	if (!parse_elements(fd, data, &first_mline))
-		return ((close(fd)), 0);
+		return (get_next_line(-1), (close(fd)), 0);
 	if (!validate_elements_complete(data))
-		return ((frr(fd, first_mline)), 0);
+		return (get_next_line(-1), (frr(fd, first_mline)), 0);
 	if (!parse_map(fd, data, first_mline))
-		return ((frr(fd, first_mline)), 0);
+		return (get_next_line(-1), (frr(fd, first_mline)), 0);
 	frr(fd, first_mline);
 	if (!validate_map(data))
 		return (0);

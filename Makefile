@@ -19,30 +19,45 @@ endif
 
 CC = cc
 
-# CFLAGS  = -Wall
+CFLAGS  = -Wall
 # CFLAGS  = -Wall -fsanitize=address -g
 # CFLAGS  = -Wall -Werror -Wextra -fsanitize=address -g
 # CFLAGS  = -Wall -Werror -Wextra
 
 
-Parse = mandatory/main.c \
-		mandatory/parsing/utils.c \
+Parse = mandatory/parsing/utils.c \
 		mandatory/parsing/parsing.c \
 		mandatory/parsing/parsing_utils.c \
+		mandatory/parsing/parse_levels.c \
 	  	mandatory/parsing/textures.c \
 		mandatory/parsing/color.c \
 		mandatory/parsing/color_utils.c \
-		mandatory/parsing/init.c \
 		mandatory/parsing/map.c \
 		mandatory/parsing/map_utils.c \
 		mandatory/parsing/map_utils2.c
 
-Rays = 	mandatory/Raycasting/ft_raycast.c mandatory/Raycasting/ft_3drendering.c \
-		mandatory/Raycasting/ft_textures.c mandatory/Raycasting/render_text.c \
-		mandatory/Raycasting/redering_text_utils.c
 
-SRC = $(Parse) \
-		$(Rays) \
+Game = 	mandatory/Rays/ft_wrap_start_game.c \
+		mandatory/Rays/ft_wrap_main_core.c \
+		mandatory/Rays/ft_init.c \
+		mandatory/Rays/ft_raycast.c \
+		mandatory/Rays/ft_player.c \
+		mandatory/Rays/ft_keys.c\
+		mandatory/Rays/ft_list.c\
+		mandatory/Rays/ft_utils.c \
+		mandatory/Rays/ft_remove_later.c \
+		mandatory/Rays/ft_free.c \
+		mandatory/Randering/ft_3drendering.c \
+		mandatory/Randering/ft_textures.c \
+		mandatory/Randering/render_text.c \
+		mandatory/Randering/redering_text_utils.c
+		
+
+SRC = 	mandatory/main.c \
+		$(Parse)  \
+		$(Game)
+		
+	
 
 
 OBJ = $(SRC:.c=.o)
@@ -59,18 +74,19 @@ all: clean $(NAME)
 
 $(NAME): $(OBJ)
 #	@make -C $(libft_DIR)
-	$(CC) $(CFLAGS) $(OBJ) $(MLX_LIBRARIES) $(libft) -o $(NAME) -lm && $(add)
+	$(CC) $(CFLAGS) $(OBJ) $(MLX_LIBRARIES) $(libft) -o $(NAME) -lm && make clean && $(add)
+
 
 %.o: %.c $(INC) $(libft_DIR)/libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 #	@make -C $(libft_DIR) clean
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean: clean
 #	@make -C $(libft_DIR) fclean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
