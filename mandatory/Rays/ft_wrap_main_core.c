@@ -6,7 +6,7 @@
 /*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:56:32 by akzaza            #+#    #+#             */
-/*   Updated: 2025/12/04 03:17:00 by noctis           ###   ########.fr       */
+/*   Updated: 2025/12/05 02:12:23 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_set_player_data_bak(t_data *data)
 {
-	data->player_bak.mouse_l_p = data->player.mouse_l_p;
 	data->player_bak.orientation = data->player.orientation;
 	data->player_bak.pos_x = data->player.pos_x;
 	data->player_bak.pos_y = data->player.pos_y;
@@ -25,6 +24,8 @@ int	ft_insert_dome_data(t_data *data)
 {
 	data->map.cell_s = (int)fmin(HEIGHT / data->map.grid_y, WIDTH
 			/ data->map.grid_x);
+	if (data->map.cell_s < 1)
+		data->map.cell_s = 1;
 	data->fov = ft_rad(60);
 	data->move_speed = 0.10;
 	data->player.mouse_l_p = -1;
@@ -65,9 +66,9 @@ int	ft_wrap_main_core(t_game *game, char *path)
 	{
 		tmp = ft_creat_new_list(path);
 		if (!tmp)
-			return (-1);
+			return (0);
 		if (ft_main_core(&tmp->data, tmp->path))
-			return (ft_free_lvl(tmp), -1);
+			return (ft_free_lvl(tmp), 0);
 		tmp->id = i++;
 		ft_add_list_end(&game->lvls, tmp);
 		if (!tmp->data.next_file)
@@ -76,5 +77,6 @@ int	ft_wrap_main_core(t_game *game, char *path)
 	}
 	game->c_lvl = game->lvls;
 	game->id_max = ft_list_count(game->c_lvl);
+	game->g_state = GAME_START;
 	return (1);
 }
