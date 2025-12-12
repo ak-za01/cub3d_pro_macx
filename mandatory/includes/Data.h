@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 10:45:27 by noctis            #+#    #+#             */
-/*   Updated: 2025/12/05 01:22:57 by noctis           ###   ########.fr       */
+/*   Updated: 2025/12/12 01:08:08 by akzaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #  include "../../Tools/mlx/macOS/MLX42.h"
 # endif
 
-# define WIDTH 1080
+# define WIDTH 950
 # define HEIGHT 1080
 
 // # define WIDTH 800
@@ -176,6 +176,19 @@ typedef struct s_levels
 	struct s_levels	*prev;
 }					t_levels;
 
+typedef struct s_stage_anim
+{
+	int				is_active;
+	int				current_frame;
+	int				frame_counter;
+	int				frame_delay;
+	int				total_frames;
+	char			folder[256];
+	mlx_image_t		*current_img;
+	int				stage;
+	int				timer;
+}					t_stage_anim;
+
 typedef struct s_game
 {
 	t_mlx			mlx;
@@ -183,7 +196,9 @@ typedef struct s_game
 	t_levels		*lvls;
 	t_levels		*c_lvl;
 	int				g_state;
+	int				animating;
 	mlx_image_t		*level_text_img;
+	t_stage_anim	stage_anim;
 }					t_game;
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wrap_main_core.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:56:32 by akzaza            #+#    #+#             */
-/*   Updated: 2025/12/05 02:12:23 by noctis           ###   ########.fr       */
+/*   Updated: 2025/12/11 16:28:47 by akzaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_main_core(t_data *data, char *file_name)
 	}
 	if (ft_insert_dome_data(data) == -1)
 		return (1);
-	print_parse_results(data);
+	// print_parse_results(data);
 	return (0);
 }
 

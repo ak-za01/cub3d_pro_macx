@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wrap_start_game.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 20:52:53 by noctis            #+#    #+#             */
-/*   Updated: 2025/12/05 02:53:08 by noctis           ###   ########.fr       */
+/*   Updated: 2025/12/12 01:24:18 by akzaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	ft_all(void *param)
 
 	game = (t_game *)param;
 	data = &game->c_lvl->data;
+	update_stage_animation(game);
+	if (game->stage_anim.is_active)
+		return ;
 	if (game->g_state == GAME_START)
 	{
 		ft_start_animation(game, data);
@@ -67,6 +70,8 @@ int	ft_wrap_start_game(t_game *game)
 	game->mlx.ptr = mlx_init(WIDTH, HEIGHT, "Cube3D", true);
 	if (!game->mlx.ptr)
 		return (0);
+	game->stage_anim.is_active = 0;
+	game->stage_anim.current_img = NULL;
 	if (ft_init_lvl(game, &game->c_lvl->data) == -1)
 		return (0);
 	ft_start_game(game);

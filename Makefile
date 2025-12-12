@@ -48,6 +48,7 @@ Game = 	mandatory/Rays/ft_wrap_start_game.c \
 		mandatory/Rays/ft_lvls.c\
 		mandatory/Rays/ft_minimap.c\
 		mandatory/Rays/ft_animation.c\
+		mandatory/Rays/ft_animation_utils.c\
 		mandatory/Rays/ft_utils.c \
 		mandatory/Rays/ft_free.c \
 		mandatory/Randering/ft_3drendering.c \
