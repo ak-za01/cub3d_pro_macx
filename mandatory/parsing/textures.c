@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 07:34:36 by anktiri           #+#    #+#             */
-/*   Updated: 2025/11/28 22:29:13 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/12/03 14:41:19 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	parse_texture_line(char *line, t_data *data, int f)
 	identifier += 2;
 	identifier = skip_spaces(identifier);
 	path = extract_texture_path(identifier);
-	if (!path)
+	if (f == 0 && !path)
 	{
 		print_error("Invalid texture path");
 		return (0);
