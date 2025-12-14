@@ -6,13 +6,13 @@
 /*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 02:27:17 by akzaza            #+#    #+#             */
-/*   Updated: 2025/12/12 02:27:21 by akzaza           ###   ########.fr       */
+/*   Updated: 2025/12/14 19:52:42 by akzaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void	display_frame(t_game *game)
+void	display_frame(t_game *game)
 {
 	char			*num;
 	char			*path;
@@ -41,13 +41,17 @@ static void	handle_space_key(t_game *game)
 	{
 		ft_strlcpy(game->stage_anim.folder, 
 			"mandatory/animation/Loading_animation/loading_screen", 256);
-		game->stage_anim.total_frames = 8;
-		game->stage_anim.frame_delay = 20;
+		game->stage_anim.total_frames = 16;
+		game->stage_anim.frame_delay = 25;
 		game->stage_anim.current_frame = 0;
 		game->stage_anim.stage = 2;
 	}
 	else if (game->stage_anim.stage == 3)
-		mlx_close_window(game->mlx.ptr);
+	{
+		mlx_delete_image(game->mlx.ptr, game->stage_anim.current_img);
+		game->stage_anim.stage = 1;
+	}
+	display_frame(game);
 }
 
 void	update_stage_animation(t_game *game)

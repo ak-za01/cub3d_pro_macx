@@ -6,7 +6,7 @@
 /*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 18:34:32 by anktiri           #+#    #+#             */
-/*   Updated: 2025/12/12 01:08:08 by akzaza           ###   ########.fr       */
+/*   Updated: 2025/12/14 19:52:06 by akzaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,8 @@ void			ft_switch_animation(t_game *game, t_data *data);
 void			ft_dead_animation(t_game *game, t_data *data);
 void			ft_end_animation(t_game *game, t_data *data);
 void			update_stage_animation(t_game *game);
+void			display_frame(t_game *game);
+void			start_animation(t_game *game, char *folder, int frames, int delay, int stage);
 
 // ------- remove later :
 

@@ -6,7 +6,7 @@
 /*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 17:36:55 by noctis            #+#    #+#             */
-/*   Updated: 2025/12/12 02:27:38 by akzaza           ###   ########.fr       */
+/*   Updated: 2025/12/14 19:52:02 by akzaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ void	start_animation(t_game *game, char *folder, int frames, int delay, int stag
 	game->stage_anim.is_active = 1;
 	game->stage_anim.current_img = NULL;
 	game->stage_anim.stage = stage;
+	display_frame(game);
 }
 
 void	ft_start_animation(t_game *game, t_data *data)
 {
 	(void)data;
-	// start_animation(game,
-	// 	"mandatory/animation/complete_animation/complete_animation", 8, 15);
+	start_animation(game,
+		"mandatory/animation/start_animation/start_animation", 8, 30, 1);
 }
 
 void	ft_switch_animation(t_game *game, t_data *data)
@@ -49,5 +50,5 @@ void	ft_end_animation(t_game *game, t_data *data)
 {
 	(void)data;
 	start_animation(game,
-		"mandatory/animation/complete_animation/complete_animation", 6, 30, 3);
+		"mandatory/animation/complete_animation/complete_animation", 8, 30, 3);
 }
