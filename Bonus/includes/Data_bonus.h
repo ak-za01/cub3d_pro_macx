@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Data_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 10:45:27 by noctis            #+#    #+#             */
-/*   Updated: 2025/12/16 21:24:23 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/12/17 15:35:39 by akzaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #  include "../../Tools/mlx/macOS/MLX42.h"
 # endif
 
-# define WIDTH 1080
+# define WIDTH 950
 # define HEIGHT 1080
 
 # define NORTH 0

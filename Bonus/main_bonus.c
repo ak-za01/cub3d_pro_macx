@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 19:15:00 by anktiri           #+#    #+#             */
-/*   Updated: 2025/12/16 21:42:24 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/12/17 16:41:45 by akzaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int ac, char **av)
 {
 	t_game	game;
 
-	atexit(t);
+	// atexit(t);
 	if (ac != 2)
 		return ((print_error("Usage: ./cub3D_bonus <map.cub>")), 1);
 	if (ft_wrap_main_core(&game, av[1]))
