@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_animation_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 17:36:55 by noctis            #+#    #+#             */
-/*   Updated: 2025/12/17 18:25:48 by akzaza           ###   ########.fr       */
+/*   Updated: 2025/12/19 21:00:06 by anktiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_handle_space_key(t_game *game)
 		ft_strlcpy(game->stage_anim.folder, "Tools/animation/Loading/loading",
 			256);
 		game->stage_anim.total_frames = 16;
-		game->stage_anim.frame_delay = 25;
+		game->stage_anim.frame_delay = 20;
 		game->stage_anim.current_frame = 0;
 		game->stage_anim.stage = 2;
 	}
@@ -119,7 +119,7 @@ void	ft_start_animation(t_game *game, char *folder, int frames, int stage)
 		game->stage_anim.frame_delay = 20;
 	else if (stage == 5)
 	{
-		game->stage_anim.frame_delay = 10;
+		game->stage_anim.frame_delay = 5;
 		game->stage_anim.timer = 0;
 	}
 	game->stage_anim.is_active = 1;
