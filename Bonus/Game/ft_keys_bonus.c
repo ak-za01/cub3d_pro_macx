@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_keys_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 20:57:21 by noctis            #+#    #+#             */
-/*   Updated: 2025/12/16 21:23:38 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/12/22 04:41:17 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ void	ft_capture_keys(mlx_key_data_t keydata, void *param)
 	game = (t_game *)param;
 	data = &game->c_lvl->data;
 	if (mlx_is_key_down(game->mlx.ptr, MLX_KEY_ESCAPE))
-	{
 		mlx_close_window(game->mlx.ptr);
-	}
 	if (mlx_is_key_down(game->mlx.ptr, MLX_KEY_F))
 	{
 		ft_open_and_close_doors(data, 0);
@@ -35,6 +33,36 @@ void	ft_capture_keys(mlx_key_data_t keydata, void *param)
 	if (mlx_is_key_down(game->mlx.ptr, MLX_KEY_L))
 	{
 		ft_lock_and_unlock_cam(game);
+	}
+	if (mlx_is_key_down(game->mlx.ptr, MLX_KEY_M))
+	{
+		ft_show_and_hide_map(game, data);
+	}
+}
+
+void	ft_show_and_hide_map(t_game *game, t_data *data)
+{
+	data->big.offset_x = 0;
+	data->big.offset_y = 0;
+	if (game->show_map)
+	{
+		if (data->big.ptr_img)
+			data->big.ptr_img->enabled = false;
+		game->show_map = 0;
+		if (data->mini.ptr_img)
+			data->mini.ptr_img->enabled = true;
+		if (data->mini.cadre_img)
+			data->mini.cadre_img->enabled = true;
+	}
+	else
+	{
+		if (data->big.ptr_img)
+			data->big.ptr_img->enabled = true;
+		game->show_map = 1;
+		if (data->mini.ptr_img)
+			data->mini.ptr_img->enabled = false;
+		if (data->mini.cadre_img)
+			data->mini.cadre_img->enabled = false;
 	}
 }
 
