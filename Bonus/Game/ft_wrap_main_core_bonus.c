@@ -6,7 +6,7 @@
 /*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 20:56:32 by akzaza            #+#    #+#             */
-/*   Updated: 2025/12/13 13:16:59 by noctis           ###   ########.fr       */
+/*   Updated: 2025/12/21 22:23:02 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	ft_wrap_main_core(t_game *game, char *path)
 		if (!tmp)
 			return (0);
 		if (ft_main_core(&tmp->data, tmp->path))
-			return (ft_free_lvl(tmp), 0);
+			return (ft_free_lvl(game, tmp), 0);
 		tmp->id = i++;
 		ft_add_list_end(&game->lvls, tmp);
 		if (!tmp->data.next_file)

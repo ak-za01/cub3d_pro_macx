@@ -19,12 +19,12 @@ else
 	add = echo "" && ./$(NAME) map.cub
 	b_add = echo "" && ./$(B_NAME) map.cub
 endif
-
+# MallocScribble=1 MallocGuardEdges=1
 #---------------------------------------------------------------#
 
 CC = cc
 
-CFLAGS  = -Wall -Werror -Wextra
+# CFLAGS  = -Wall -Werror -Wextra
 # CFLAGS  = -Wall -Werror -Wextra -fsanitize=address -g
 
 SRC = Mandatory/main.c \
@@ -80,6 +80,7 @@ B_SRC = Bonus/main_bonus.c \
 		Bonus/Game/ft_wrap_start_game_bonus.c \
 		Bonus/Game/ft_wrap_main_core_bonus.c \
 		Bonus/Game/ft_init_bonus.c \
+		Bonus/Game/ft_init_2_bonus.c \
 		Bonus/Game/ft_raycast_bonus.c \
 		Bonus/Game/ft_player_bonus.c \
 		Bonus/Game/ft_player2_bonus.c \
@@ -87,6 +88,7 @@ B_SRC = Bonus/main_bonus.c \
 		Bonus/Game/ft_list_bonus.c \
 		Bonus/Game/ft_lvls_bonus.c \
 		Bonus/Game/ft_minimap_bonus.c \
+		Bonus/Game/ft_map_bonus.c \
 		Bonus/Game/ft_animation_bonus.c \
 		Bonus/Game/ft_utils_bonus.c \
 		Bonus/Game/ft_free_bonus.c \

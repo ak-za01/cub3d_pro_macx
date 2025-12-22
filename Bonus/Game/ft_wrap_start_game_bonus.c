@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wrap_start_game_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 20:52:53 by noctis            #+#    #+#             */
-/*   Updated: 2025/12/15 03:16:21 by noctis           ###   ########.fr       */
+/*   Updated: 2025/12/22 12:57:13 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	ft_all(void *param)
 	game = (t_game *)param;
 	data = &game->c_lvl->data;
 	if (ft_animation(game))
+		return ;
+	if (ft_map(game, data))
 		return ;
 	ft_capture_player_moves(game, data);
 	ft_speed(game, data);
