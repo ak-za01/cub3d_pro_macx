@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   textures.c                                         :+:      :+:    :+:   */
+/*   textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akzaza <akzaza@student.42.fr>              +#+  +:+       +#+        */
+/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 07:34:36 by anktiri           #+#    #+#             */
-/*   Updated: 2025/10/19 14:52:31 by akzaza           ###   ########.fr       */
+/*   Updated: 2025/12/10 18:36:10 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ int	get_texture_index(char *identifier, int *text, int *elemt)
 	else if (ft_strncmp(identifier, "EA", 2) == 0 && (identifier[2] == '\0'
 			|| ft_isspace(identifier[2])))
 		return ((*text = EAST), (*elemt = ELEM_EA), 1);
+	else if (ft_strncmp(identifier, "DR", 2) == 0 && (identifier[2] == '\0'
+			|| ft_isspace(identifier[2])))
+		return ((*text = DOOR), (*elemt = ELEM_DR), 1);
+	else if (ft_strncmp(identifier, "PR", 2) == 0 && (identifier[2] == '\0'
+			|| ft_isspace(identifier[2])))
+		return ((*text = PORTAL), (*elemt = ELEM_PR), 1);
 	return (0);
 }
 
@@ -79,7 +85,7 @@ int	set_texture(t_data *data, int tex_idx, int elem_idx, char *path)
 	return (1);
 }
 
-int	parse_texture_line(char *line, t_data *data)
+int	parse_texture_line(char *line, t_data *data, int f)
 {
 	char	*identifier;
 	char	*path;
@@ -91,15 +97,17 @@ int	parse_texture_line(char *line, t_data *data)
 	identifier = skip_spaces(line);
 	if (!identifier || !*identifier)
 		return (0);
-	if (!get_texture_index(identifier, &tex_idx, &elem_idx))
+	if (!f && !get_texture_index(identifier, &tex_idx, &elem_idx))
 		return (0);
 	identifier += 2;
 	identifier = skip_spaces(identifier);
 	path = extract_texture_path(identifier);
-	if (!path)
+	if (f == 0 && !path)
 	{
 		print_error("Invalid texture path");
 		return (0);
 	}
+	else if (f == 1)
+		return ((data->next_file = path), 1);
 	return (set_texture(data, tex_idx, elem_idx, path));
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 20:55:35 by akzaza            #+#    #+#             */
-/*   Updated: 2025/11/24 18:50:17 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/12/15 05:07:03 by noctis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	get_char_at(t_data *data, int y, int x)
 
 static int	check_surrounded(t_data *data, int y, int x)
 {
-	char c;
+	char	c;
 
 	c = get_char_at(data, y - 1, x);
 	if (!is_valid_pos(c))
@@ -57,7 +57,7 @@ static int	check_surrounded(t_data *data, int y, int x)
 	c = get_char_at(data, y, x + 1);
 	if (!is_valid_pos(c))
 		return (0);
-    return (1);
+	return (1);
 }
 
 int	check_map_closed(t_data *data)
@@ -73,11 +73,13 @@ int	check_map_closed(t_data *data)
 		while (data->map.grid[i][j])
 		{
 			c = data->map.grid[i][j];
-			if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
+			if (c == '0' || c == '2' || c == '4' || c == '5' || c == 'N'
+				|| c == 'S' || c == 'E' || c == 'W')
 			{
 				if (!check_surrounded(data, i, j))
 					return ((print_error("Map not closed (space or \
-void near walkable area)")), 0);
+						void near walkable area)")),
+						0);
 			}
 			j++;
 		}
