@@ -6,13 +6,13 @@
 /*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 17:36:55 by noctis            #+#    #+#             */
-/*   Updated: 2025/12/19 21:00:06 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/12/22 12:46:44 by anktiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d_bonus.h"
 
-void	ft_display_frame(t_game *game)
+void	ft_display_frame(t_game *game, int hegh, int wid)
 {
 	char			*num;
 	char			*path;
@@ -35,7 +35,7 @@ void	ft_display_frame(t_game *game)
 		mlx_delete_texture(tex);
 		return ;
 	}
-	mlx_resize_image(game->stage_anim.current_img, WIDTH, HEIGHT);
+	mlx_resize_image(game->stage_anim.current_img, WIDTH / hegh, HEIGHT / wid);
 	mlx_image_to_window(game->mlx.ptr, game->stage_anim.current_img, 0, 0);
 	mlx_delete_texture(tex);
 }
@@ -60,7 +60,16 @@ void	ft_handle_space_key(t_game *game)
 		}
 		game->stage_anim.stage = 1;
 	}
-	ft_display_frame(game);
+	else if (game->stage_anim.stage == 6)
+	{
+		if (game->stage_anim.current_img)
+		{
+			mlx_delete_image(game->mlx.ptr, game->stage_anim.current_img);
+			game->stage_anim.current_img = NULL;
+		}
+		game->stage_anim.is_active = 0;
+	}
+
 }
 
 void	ft_update_stage_animation(t_game *game)
@@ -75,7 +84,7 @@ void	ft_update_stage_animation(t_game *game)
 	if (++game->stage_anim.frame_counter >= game->stage_anim.frame_delay)
 	{
 		game->stage_anim.frame_counter = 0;
-		ft_display_frame(game);
+		ft_display_frame(game, 1, 1);
 		if (++game->stage_anim.current_frame >= game->stage_anim.total_frames)
 		{
 			if (game->stage_anim.stage == 2)
@@ -117,6 +126,11 @@ void	ft_start_animation(t_game *game, char *folder, int frames, int stage)
 	game->stage_anim.frame_delay = 30;
 	if (stage == 1)
 		game->stage_anim.frame_delay = 20;
+	else if (stage == 6)
+	{
+		game->stage_anim.frame_delay = 2;
+		ft_display_frame(game, 4, 4);
+	}
 	else if (stage == 5)
 	{
 		game->stage_anim.frame_delay = 5;
@@ -125,7 +139,7 @@ void	ft_start_animation(t_game *game, char *folder, int frames, int stage)
 	game->stage_anim.is_active = 1;
 	game->stage_anim.current_img = NULL;
 	game->stage_anim.stage = stage;
-	ft_display_frame(game);
+	ft_display_frame(game, 1, 1);
 }
 
 int	ft_animation(t_game *game)
@@ -157,5 +171,10 @@ int	ft_animation(t_game *game)
 		return (ft_start_animation(game, "Tools/animation/failed/failed", 8, 4),
 			game->g_state = DEFAULT, 1);
 	}
+	// else
+	// {
+	// 	return (ft_start_animation(game, "Tools/animation/zombie/frame_", 56, 6),
+	// 		game->g_state = DEFAULT, 1);
+	// }
 	return (game->g_state = DEFAULT, 0);
 }

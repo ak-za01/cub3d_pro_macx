@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 18:34:32 by anktiri           #+#    #+#             */
-/*   Updated: 2025/12/22 04:24:18 by noctis           ###   ########.fr       */
+/*   Updated: 2025/12/22 12:28:54 by anktiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,8 @@ void			ft_update_stage_animation(t_game *game);
 void			ft_start_animation(t_game *game, char *folder, int frames,
 					int stage);
 void			ft_handle_space_key(t_game *game);
-void			ft_display_frame(t_game *game);
+void			ft_display_frame(t_game *game, int hegh, int wid);
+// void			ft_display_frame(t_game *game);
 void			fps(void);
 
 #endif
