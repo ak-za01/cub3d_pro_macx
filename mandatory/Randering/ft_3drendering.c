@@ -31,11 +31,7 @@ void	calculate_wall_projection(t_data *data, t_render_vars *vars)
 
 int	get_text_index(t_ray *ray)
 {
-	if (ray->hit == 2)
-		return (DOOR);
-	else if (ray->hit == 4 || ray->hit == 5)
-		return (PORTAL);
-	else if (ray->drc == 'N')
+	if (ray->drc == 'N')
 		return (NORTH);
 	else if (ray->drc == 'S')
 		return (SOUTH);

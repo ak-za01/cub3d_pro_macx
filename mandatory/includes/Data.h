@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 10:45:27 by noctis            #+#    #+#             */
-/*   Updated: 2025/12/22 19:47:17 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/12/23 01:08:19 by anktiri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,15 @@
 # define SOUTH 1
 # define WEST 2
 # define EAST 3
-# define DOOR 4
-# define PORTAL 5
 
-# define TEX_COUNT 6
+# define TEX_COUNT 4
 # define ELEM_NO 0
 # define ELEM_SO 1
 # define ELEM_WE 2
 # define ELEM_EA 3
-# define ELEM_DR 4
-# define ELEM_PR 5
-# define ELEM_F 6
-# define ELEM_C 7
-# define ELEM_COUNT 8
+# define ELEM_F 4
+# define ELEM_C 5
+# define ELEM_COUNT 6
 
 # define VISIBLE_DISTANCE 100
 # define RAYS WIDTH
@@ -192,7 +188,6 @@ typedef struct s_texture
 	uint8_t			*pixels;
 	int				bytes_per_pixel;
 	int				loaded;
-	xpm_t			*xpm;
 }					t_texture;
 
 typedef struct s_data

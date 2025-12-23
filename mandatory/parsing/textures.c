@@ -35,12 +35,6 @@ int	get_texture_index(char *identifier, int *text, int *elemt)
 	else if (ft_strncmp(identifier, "EA", 2) == 0 && (identifier[2] == '\0'
 			|| ft_isspace(identifier[2])))
 		return ((*text = EAST), (*elemt = ELEM_EA), 1);
-	else if (ft_strncmp(identifier, "DR", 2) == 0 && (identifier[2] == '\0'
-			|| ft_isspace(identifier[2])))
-		return ((*text = DOOR), (*elemt = ELEM_DR), 1);
-	else if (ft_strncmp(identifier, "PR", 2) == 0 && (identifier[2] == '\0'
-			|| ft_isspace(identifier[2])))
-		return ((*text = PORTAL), (*elemt = ELEM_PR), 1);
 	return (0);
 }
 

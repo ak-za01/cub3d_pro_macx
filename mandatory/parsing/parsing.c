@@ -14,8 +14,8 @@
 
 int	is_map_char(char c)
 {
-	return (c == '0' || c == '1' || c == '2' || c == '4' || c == '5' || c == 'N'
-		|| c == 'S' || c == 'E' || c == 'W' || c == ' ');
+	return (c == '0' || c == '1'|| c == 'N' || c == 'S' || 
+		c == 'E' || c == 'W' || c == ' ');
 }
 
 int	element_line(char *line, t_data *data)
