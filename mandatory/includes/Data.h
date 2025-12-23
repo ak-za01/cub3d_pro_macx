@@ -6,19 +6,14 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 10:45:27 by noctis            #+#    #+#             */
-/*   Updated: 2025/12/23 12:29:48 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/12/23 13:55:19 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DATA_H
 # define DATA_H
 
-# ifdef __linux__
-#  include "../../Tools/mlx/linux/MLX42.h"
-# else
-#  include "../../Tools/mlx/macOS/MLX42.h"
-# endif
-
+# include "/Users/aakritah/Desktop/mlx/macOS/MLX42.h"
 # define WIDTH 1080
 # define HEIGHT 1080
 

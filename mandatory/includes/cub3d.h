@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 18:34:32 by anktiri           #+#    #+#             */
-/*   Updated: 2025/12/23 13:01:17 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/12/23 13:49:35 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "../42_Libft/libft.h"
+# include "/Users/aakritah/Desktop/mlx/macOS/MLX42.h"
 # include "Data.h"
 # include <fcntl.h>
 # include <math.h>
@@ -21,12 +22,6 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <unistd.h>
-
-# ifdef __linux__
-#  include "../../Tools/mlx/linux/MLX42.h"
-# else
-#  include "../../Tools/mlx/macOS/MLX42.h"
-# endif
 
 int				main(int ac, char **av);
 

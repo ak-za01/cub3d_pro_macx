@@ -1,31 +1,7 @@
-#----------------------------------   Platform detection :
-
-UNAME_S := $(shell uname -s)
-
-ifeq ($(UNAME_S),Linux)
-	MLX_LIBRARIES = Tools/mlx/linux/libmlx42_linux.a \
-			-ldl -lglfw -lm -lpthread
-
-	add = echo "" && \
-	GTK_DEBUG=none ./$(NAME) ./Tools/maps/map.cub 2> >(grep -vi 'gtk-warning' >&2)
-
-	b_add = echo "" && \
-	GTK_DEBUG=none ./$(B_NAME) ./Tools/maps/level1.cub 2> >(grep -vi 'gtk-warning' >&2)
-
-else
-	MLX_LIBRARIES = Tools/mlx/macOS/libmlx42_combined.a \
-		-framework Cocoa -framework OpenGL -framework IOKit -lm -ldl
-
-	add = echo "" && ./$(NAME) Tools/maps/map.cub
-	b_add = echo "" && ./$(B_NAME) Tools/maps/level1.cub
-endif
-
-#---------------------------------------------------------------#
-
 CC = cc
-
 CFLAGS  = -Wall -Werror -Wextra
-# CFLAGS  = -Wall -Werror -Wextra -fsanitize=address -g
+MLX_LIBRARIES = ~/Desktop/mlx/macOS/libmlx42_combined.a \
+	-framework Cocoa -framework OpenGL -framework IOKit -lm -ldl
 
 SRC = Mandatory/main.c \
 		Mandatory/Parsing/utils.c \
@@ -52,7 +28,6 @@ SRC = Mandatory/main.c \
 		Mandatory/Randering/ft_textures.c \
 		Mandatory/Randering/render_text.c \
 		Mandatory/Randering/redering_text_utils.c
-
 
 OBJ = $(SRC:.c=.o)
 
@@ -107,38 +82,33 @@ libft_B = $(libft_DIR_B)/libft.a
 B_NAME = cub3D_bonus
 
 
-
-all: clean $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ)
-#	@make -C $(libft_DIR)
+	@make -C $(libft_DIR)
 	$(CC) $(CFLAGS) $(OBJ) $(MLX_LIBRARIES) $(libft) -o $(NAME)
-	make clean
-	$(add)
 
 Mandatory/%.o: Mandatory/%.c $(Head) $(libft_DIR)/libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: clean $(B_NAME)
+bonus: $(B_NAME)
 
 $(B_NAME): $(B_OBJ)
-#	@make -C $(libft_DIR_B)
+	@make -C $(libft_DIR_B)
 	$(CC) $(CFLAGS) $(B_OBJ) $(MLX_LIBRARIES) $(libft_B) -o $(B_NAME)
-	make clean
-	$(b_add)
 
 Bonus/%.o: Bonus/%.c $(B_Head) $(libft_DIR_B)/libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-#	@make -C $(libft_DIR) clean
-#	@make -C $(libft_DIR_B) clean
+	@make -C $(libft_DIR) clean
+	@make -C $(libft_DIR_B) clean
 	@rm -f $(OBJ)
 	@rm -f $(B_OBJ)
 
 fclean: clean
-#	@make -C $(libft_DIR) fclean
-#	@make -C $(libft_DIR_B) fclean
+	@make -C $(libft_DIR) fclean
+	@make -C $(libft_DIR_B) fclean
 	@rm -f $(NAME)
 	@rm -f $(B_NAME)
 
