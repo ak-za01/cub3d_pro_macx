@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 17:00:29 by anktiri           #+#    #+#             */
-/*   Updated: 2025/12/10 18:36:10 by noctis           ###   ########.fr       */
+/*   Updated: 2025/12/23 14:09:47 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	check_extension(char *str, int flag)
 	}
 	if (flag == 2)
 	{
-		if (ft_strncmp(str, ".xpm", 4) == 0)
-			return (1);
 		if (ft_strncmp(str, ".png", 4) == 0)
 			return (2);
 		return (0);

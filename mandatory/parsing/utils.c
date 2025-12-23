@@ -22,8 +22,6 @@ int	check_extension(char *str, int flag)
 	}
 	if (flag == 2)
 	{
-		if (ft_strncmp(str, ".xpm", 4) == 0)
-			return (1);
 		if (ft_strncmp(str, ".png", 4) == 0)
 			return (2);
 		return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noctis <noctis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 08:03:13 by anktiri           #+#    #+#             */
-/*   Updated: 2025/12/15 04:20:40 by noctis           ###   ########.fr       */
+/*   Updated: 2025/12/23 14:15:45 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ int	validate_elements_complete(t_data *data)
 			print_error("Missing West texture (WE)");
 		else if (!data->parsed[ELEM_EA])
 			print_error("Missing East texture (EA)");
+		else if (!data->parsed[ELEM_DR])
+			print_error("Missing Door texture (DR)");
+		else if (!data->parsed[ELEM_PR])
+			print_error("Missing Portal texture (PR)");
 		else if (!data->parsed[ELEM_F])
 			print_error("Missing Floor color (F)");
 		else if (!data->parsed[ELEM_C])

@@ -6,7 +6,7 @@
 /*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 10:45:27 by noctis            #+#    #+#             */
-/*   Updated: 2025/12/23 13:50:32 by aakritah         ###   ########.fr       */
+/*   Updated: 2025/12/23 14:09:54 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,6 @@ typedef struct s_texture
 	uint8_t			*pixels;
 	int				bytes_per_pixel;
 	int				loaded;
-	xpm_t			*xpm;
 }					t_texture;
 
 typedef struct s_data
