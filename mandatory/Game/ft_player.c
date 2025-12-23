@@ -18,8 +18,7 @@ int	ft_find_walls(t_data *data, int x, int y)
 		return (1);
 	if (x < 0 || x >= (int)ft_strlen(data->map.grid[y]))
 		return (1);
-	if (data->map.grid[y][x] == '1' || data->map.grid[y][x] == '2'
-		|| data->map.grid[y][x] == '4' || data->map.grid[y][x] == '5')
+	if (data->map.grid[y][x] == '1')
 		return (1);
 	return (0);
 }

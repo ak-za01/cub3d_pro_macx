@@ -24,15 +24,6 @@ unsigned int	ft_color(t_color clr)
 	return ((r << 24) | (g << 16) | (b << 8) | 0xFFu);
 }
 
-void	ft_reset_player_data(t_data *data)
-{
-	data->player.mouse_l_p = -1;
-	data->player.orientation = data->player_bak.orientation;
-	data->player.pos_x = data->player_bak.pos_x;
-	data->player.pos_y = data->player_bak.pos_y;
-	data->ang = data->player_bak.ang;
-}
-
 double	ft_rad(double x)
 {
 	return (x * M_PI / 180.0);

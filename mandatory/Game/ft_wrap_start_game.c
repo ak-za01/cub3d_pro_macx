@@ -19,16 +19,9 @@ void	ft_all(void *param)
 
 	game = (t_game *)param;
 	data = &game->c_lvl->data;
-	if (ft_animation(game))
-		return ;
-	if (ft_map(game, data, -1, -1))
-		return ;
-	ft_hands(game);
 	ft_capture_player_moves(game, data);
 	ft_speed(game, data);
 	ft_raycasting(data);
-	ft_open_and_close_doors(data, 1);
-	ft_minimap(data);
 	ft_render3d(game, data);
 }
 

@@ -12,47 +12,12 @@
 
 #include "../includes/cub3d.h"
 
-void	ft_switch_lvl(t_game *game, t_data *data)
-{
-	if (data->rays[RAYS / 2].len <= 2.0 && data->rays[RAYS / 2].hit == 4)
-	{
-		ft_destroy_lvl(game, data, 3);
-		if (game->c_lvl->next)
-		{
-			game->c_lvl = game->c_lvl->next;
-			game->g_state = LVL_SWITCH;
-		}
-		else
-		{
-			game->c_lvl = game->lvls;
-			game->g_state = GAME_END;
-		}
-		ft_init_lvl(game, &game->c_lvl->data);
-	}
-	if (data->rays[RAYS / 2].len <= 2.0 && data->rays[RAYS / 2].hit == 5)
-	{
-		ft_destroy_lvl(game, data, 3);
-		game->c_lvl = game->lvls;
-		game->g_state = PLAYER_DEAD;
-		ft_init_lvl(game, &game->c_lvl->data);
-	}
-}
-
 void	ft_destroy_lvl(t_game *game, t_data *data, int f)
 {
 	if (f >= 0)
 	{
 		if (game->mlx.ptr_img)
 			mlx_delete_image(game->mlx.ptr, game->mlx.ptr_img);
-	}
-	if (f >= 1)
-	{
-		if (data->big.ptr_img)
-			mlx_delete_image(game->mlx.ptr, data->big.ptr_img);
-		if (data->mini.ptr_img)
-			mlx_delete_image(game->mlx.ptr, data->mini.ptr_img);
-		if (data->mini.cadre_img)
-			mlx_delete_image(game->mlx.ptr, data->mini.cadre_img);
 	}
 	if (f >= 2)
 	{

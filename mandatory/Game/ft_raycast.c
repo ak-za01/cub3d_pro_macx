@@ -67,17 +67,8 @@ void	ft_first_cell_len(t_data *data, t_ray *ray)
 
 void	ft_set_info(t_ray *ray, char w)
 {
-	if (w == '1' || w == '2' || w == '4' || w == '5')
-	{
-		if (w == '2')
-			ray->hit = 2;
-		else if (w == '4')
-			ray->hit = 4;
-		else if (w == '5')
-			ray->hit = 5;
-		else
-			ray->hit = 1;
-	}
+	if (w == '1')
+		ray->hit = 1;
 	if (ray->side == 0)
 	{
 		if (ray->ang_cos < 0)

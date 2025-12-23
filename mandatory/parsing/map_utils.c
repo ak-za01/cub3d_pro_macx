@@ -73,8 +73,7 @@ int	check_map_closed(t_data *data)
 		while (data->map.grid[i][j])
 		{
 			c = data->map.grid[i][j];
-			if (c == '0' || c == '2' || c == '4' || c == '5' || c == 'N'
-				|| c == 'S' || c == 'E' || c == 'W')
+			if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
 			{
 				if (!check_surrounded(data, i, j))
 					return ((print_error("Map not closed (space or \

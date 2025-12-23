@@ -12,14 +12,6 @@
 
 #include "../includes/cub3d.h"
 
-void	ft_set_player_data_bak(t_data *data)
-{
-	data->player_bak.orientation = data->player.orientation;
-	data->player_bak.pos_x = data->player.pos_x;
-	data->player_bak.pos_y = data->player.pos_y;
-	data->player_bak.ang = data->ang;
-}
-
 int	ft_insert_dome_data(t_data *data)
 {
 	data->map.cell_s = (int)fmin(HEIGHT / data->map.grid_y, WIDTH
@@ -33,7 +25,6 @@ int	ft_insert_dome_data(t_data *data)
 	if (!data->rays)
 		return (-1);
 	ft_memset(data->rays, 0, sizeof(t_ray) * RAYS);
-	ft_set_player_data_bak(data);
 	return (0);
 }
 
@@ -67,7 +58,7 @@ int	ft_wrap_main_core(t_game *game, char *path)
 		if (!tmp)
 			return (0);
 		if (ft_main_core(&tmp->data, tmp->path))
-			return (ft_free_lvl(game, tmp), 0);
+			return (ft_free_lvl(tmp), 0);
 		tmp->id = i++;
 		ft_add_list_end(&game->lvls, tmp);
 		if (!tmp->data.next_file)
@@ -76,8 +67,5 @@ int	ft_wrap_main_core(t_game *game, char *path)
 	}
 	game->c_lvl = game->lvls;
 	game->id_max = ft_list_count(game->c_lvl);
-	game->g_state = GAME_START;
-	game->stage_anim.is_active = 0;
-	game->stage_anim.current_img = NULL;
 	return (1);
 }

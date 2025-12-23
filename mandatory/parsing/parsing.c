@@ -14,8 +14,8 @@
 
 int	is_map_char(char c)
 {
-	return (c == '0' || c == '1'|| c == 'N' || c == 'S' || 
-		c == 'E' || c == 'W' || c == ' ');
+	return (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
+		|| c == ' ');
 }
 
 int	element_line(char *line, t_data *data)
@@ -25,11 +25,6 @@ int	element_line(char *line, t_data *data)
 		if (is_texture_line(line))
 		{
 			if (!parse_texture_line(line, data, 0))
-				return ((free(line)), 0);
-		}
-		else if (is_lvl_line(line))
-		{
-			if (!parse_lvl_line(line, data))
 				return ((free(line)), 0);
 		}
 		else

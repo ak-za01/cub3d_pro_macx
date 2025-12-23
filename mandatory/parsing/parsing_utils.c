@@ -30,7 +30,8 @@ int	is_texture_line(char *line)
 				|| ft_isspace(str[2]))) || (ft_strncmp(str, "SO", 2) == 0
 			&& (str[2] == '\0' || ft_isspace(str[2]))) || (ft_strncmp(str, "WE",
 				2) == 0 && (str[2] == '\0' || ft_isspace(str[2])))
-		|| (ft_strncmp(str, "EA", 2) == 0 && (str[2] == '\0' || ft_isspace(str[2]))))
+		|| (ft_strncmp(str, "EA", 2) == 0 && (str[2] == '\0'
+				|| ft_isspace(str[2]))))
 		return (1);
 	return (0);
 }
@@ -91,8 +92,6 @@ int	is_element_line(char *line)
 		return (1);
 	if ((str[0] == 'F' && (str[1] == '\0' || ft_isspace(str[1])))
 		|| (str[0] == 'C' && (str[1] == '\0' || ft_isspace(str[1]))))
-		return (1);
-	if (ft_strncmp(str, "LV", 2) == 0 && (str[2] == '\0' || ft_isspace(str[2])))
 		return (1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anktiri <anktiri@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aakritah <aakritah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 10:45:27 by noctis            #+#    #+#             */
-/*   Updated: 2025/12/23 01:08:19 by anktiri          ###   ########.fr       */
+/*   Updated: 2025/12/23 12:29:48 by aakritah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,38 +41,6 @@
 # define MOUSE_SP 0.002
 # define M_PI 3.14159265358979323846
 
-typedef enum s_game_states
-{
-	GAME_START,
-	LVL_SWITCH,
-	PLAYER_DEAD,
-	GAME_END,
-	DEFAULT = -1
-}					t_game_states;
-
-typedef struct s_stage_anim
-{
-	int				is_active;
-	int				current_frame;
-	int				frame_counter;
-	int				frame_delay;
-	int				total_frames;
-	char			folder[256];
-	mlx_image_t		*current_img;
-	int				stage;
-	int				timer;
-}					t_stage_anim;
-
-typedef struct s_hand_anim
-{
-	char			folder[256];
-	int				total_frames;
-	int				current_frame;
-	int				frame_delay;
-	int				frame_delay_counter;
-	mlx_image_t		*ptr_img;
-}					t_hand_anim;
-
 typedef struct s_render_vars
 {
 	double			proj;
@@ -104,51 +72,6 @@ typedef struct s_ray
 	int				side;
 	char			drc;
 }					t_ray;
-
-typedef struct s_norm
-{
-	int				x_s;
-	int				y_s;
-	int				x_e;
-	int				y_e;
-	int				p_size;
-	int				px;
-	int				py;
-	int				i;
-	int				j;
-}					t_norm;
-
-typedef struct s_minimap
-{
-	mlx_image_t		*ptr_img;
-	mlx_image_t		*cadre_img;
-	int32_t			id_img;
-	double			height;
-	double			width;
-	int				p_size;
-	int				cell_size;
-}					t_mini;
-
-typedef struct s_bigmap
-{
-	mlx_image_t		*ptr_img;
-	int32_t			id_img;
-	double			height;
-	double			width;
-	int				p_size;
-	int				cell_size;
-	double			offset_x;
-	double			offset_y;
-}					t_big;
-
-typedef struct s_player_bak
-{
-	double			pos_x;
-	double			pos_y;
-	char			orientation;
-	double			mouse_l_p;
-	double			ang;
-}					t_player_bak;
 
 typedef struct s_player
 {
@@ -200,9 +123,6 @@ typedef struct s_data
 	t_color			ceiling_color;
 	t_map			map;
 	t_player		player;
-	t_player_bak	player_bak;
-	t_mini			mini;
-	t_big			big;
 	t_ray			*rays;
 	double			fov;
 	double			ang;
@@ -224,12 +144,7 @@ typedef struct s_game
 	t_levels		*lvls;
 	t_levels		*c_lvl;
 	int				lock_cam;
-	int				show_map;
 	int				id_max;
-	int				g_state;
-	int				animating;
-	t_stage_anim	stage_anim;
-	t_hand_anim		hand;
 	mlx_image_t		*level_text_img;
 }					t_game;
 
